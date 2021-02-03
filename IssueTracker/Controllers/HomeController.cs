@@ -13,6 +13,13 @@ namespace IssueTracker.Controllers
             return View();
         }
 
+        public ActionResult Tickets()
+        {
+            ViewBag.Message = "Create a Ticket";
+
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

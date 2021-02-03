@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IssueTracker", "IssueTracker\IssueTracker.csproj", "{C8E0E937-F56F-4C51-8AC1-7B7DBA843A9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLibrary", "DataLibrary\DataLibrary.csproj", "{8F70DC8F-129B-43C4-9FE5-61F74BE1AE5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C8E0E937-F56F-4C51-8AC1-7B7DBA843A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8E0E937-F56F-4C51-8AC1-7B7DBA843A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8E0E937-F56F-4C51-8AC1-7B7DBA843A9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F70DC8F-129B-43C4-9FE5-61F74BE1AE5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F70DC8F-129B-43C4-9FE5-61F74BE1AE5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F70DC8F-129B-43C4-9FE5-61F74BE1AE5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F70DC8F-129B-43C4-9FE5-61F74BE1AE5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
