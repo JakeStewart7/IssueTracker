@@ -13,7 +13,7 @@ namespace IssueTracker.Controllers
             return View();
         }
 
-        public ActionResult Tickets()
+        public ActionResult CreateTicket()
         {
             ViewBag.Message = "Create a Ticket";
 

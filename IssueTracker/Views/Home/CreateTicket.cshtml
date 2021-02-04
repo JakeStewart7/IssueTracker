@@ -1,0 +1,128 @@
+﻿@model IssueTracker.Models.TicketModel
+
+@{
+    ViewBag.Title = "Ticket Creator";
+}
+
+<h2>Ticket Creator</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Create a Ticket</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @*--- Ticket Title Entry ---*@
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*--- Ticket Description Entry ---*@
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*--- Ticket Type Dropdown Menu ---*@
+    @{
+        List<SelectListItem> listTypes = new List<SelectListItem>();
+        listTypes.Add(new SelectListItem
+        {
+            Text = "Bug",
+            Value = "Bug"
+        });
+        listTypes.Add(new SelectListItem
+        {
+            Text = "Feature",
+            Value = "Feature"
+        });
+        listTypes.Add(new SelectListItem
+        {
+            Text = "Update",
+            Value = "Update"
+        });
+    }
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Type, listTypes, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*--- Ticket Priority Dropdown Menu ---*@
+    @{
+        List<SelectListItem> listPriorities = new List<SelectListItem>();
+        listPriorities.Add(new SelectListItem
+        {
+            Text = "Low",
+            Value = "Low"
+        });
+        listPriorities.Add(new SelectListItem
+        {
+            Text = "Medium",
+            Value = "Medium",
+
+        });
+        listPriorities.Add(new SelectListItem
+        {
+            Text = "High",
+            Value = "High",
+            Selected = true
+        });
+    }
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Priority, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Priority, listPriorities, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Priority, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*--- Ticket Resolver Dropdown Menu ---*@
+    @{
+        List<SelectListItem> listUsers = new List<SelectListItem>();
+        listUsers.Add(new SelectListItem
+        {
+            Text = "Me",
+            Value = "Me"
+        });
+    }
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Resolver, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Resolver, listUsers, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Resolver, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*--- Create Ticket Button ---*@
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
