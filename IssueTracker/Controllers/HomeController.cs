@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IssueTracker.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,18 @@ namespace IssueTracker.Controllers
         public ActionResult CreateTicket()
         {
             ViewBag.Message = "Create a Ticket";
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateTicket(TicketModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
 
             return View();
         }

@@ -9,6 +9,7 @@ namespace IssueTracker.Models
     public class TicketModel
     {
         [Required(ErrorMessage = "You need to enter a title for your ticket.")]
+        [StringLength(50, ErrorMessage = "Title is too long.")]
         public string Title { get; set; }
         public string Description { get; set; }
 
