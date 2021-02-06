@@ -1,4 +1,4 @@
-﻿using DataLibrary.DataAccess;
+﻿using DataLibrary.Config;
 using System;
 using System.Collections.Generic;
 using System.Linq;

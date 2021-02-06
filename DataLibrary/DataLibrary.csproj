@@ -119,13 +119,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccess\FirestoreConfig.cs" />
+    <Compile Include="BusinessLogic\TicketProcessor.cs" />
+    <Compile Include="Config\FirestoreConfig.cs" />
+    <Compile Include="DataAccess\FirestoreDataAccess.cs" />
+    <Compile Include="Models\TicketModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BusinessLogic\" />
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
