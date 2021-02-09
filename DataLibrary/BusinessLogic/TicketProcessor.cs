@@ -26,29 +26,12 @@ namespace DataLibrary.BusinessLogic
                 Timestamp = DateTime.Now.ToString(),
             };
 
-            Dictionary<string, object> data = ToDictionary<object>(ticket);
-
-            return FirestoreDataAccess.SaveData(data, "Tickets");
+            return FirestoreDataAccess.SaveData(ticket, "Tickets");
         }
 
-        // TODO
-        //public static List<TicketModel> LoadTickets()
-        //{
-        //    return FirestoreDataAccess.LoadData();
-        //}
-
-        // Adapted from https://gist.github.com/jarrettmeyer/798667/a87f9bcac2ec68541511f17da3c244c0e05bdc49
-        public static Dictionary<string, T> ToDictionary<T>(this object source)
+        public static async Task<List<TicketModel>> LoadTickets()
         {
-            if (source == null) throw new NullReferenceException("Cannot convert null object to dictionary.");
-
-            var dictionary = new Dictionary<string, T>();
-            foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(source))
-            {
-                object value = property.GetValue(source);
-                dictionary.Add(property.Name, (T)value);
-            }
-            return dictionary;
+            return await FirestoreDataAccess.LoadData<TicketModel>("Tickets");
         }
     }
 }

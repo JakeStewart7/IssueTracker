@@ -1,0 +1,75 @@
+﻿@model IEnumerable<IssueTracker.Models.TicketModel>
+
+@{
+    ViewBag.Title = "Tickets";
+}
+
+<h2>Tickets</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateTicket")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Resolver)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Priority)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Submitter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Timestamp)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Resolver)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Priority)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Submitter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Timestamp)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

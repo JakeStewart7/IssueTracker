@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using DataLibrary;
 using DataLibrary.BusinessLogic;
+using System.Threading.Tasks;
 
 namespace IssueTracker.Controllers
 {
@@ -16,24 +17,30 @@ namespace IssueTracker.Controllers
             return View();
         }
 
-        // TODO
-        //public ActionResult ViewTickets()
-        //{
-        //    ViewBag.Message = "Ticket List";
+        public async Task<ActionResult> ViewTickets()
+        {
+            ViewBag.Message = "Ticket List";
 
-        //    var data = LoadTickets();
-        //    List<TicketModel> tickets = new List<TicketModel>();
+            var data = await TicketProcessor.LoadTickets();
+            List<TicketModel> tickets = new List<TicketModel>();
 
-        //    foreach (var row in data)
-        //    {
-        //        tickets.Add(new TicketModel
-        //        {
-                    
-        //        });
-        //    }
+            foreach (var row in data)
+            {
+                tickets.Add(new TicketModel
+                {
+                    Title = row.Title,
+                    Description = row.Description,
+                    Type = row.Type,
+                    Resolver = row.Resolver,
+                    Priority = row.Priority,
+                    Status = row.Status,
+                    Submitter = row.Submitter,
+                    Timestamp = row.Timestamp
+                });
+            }
 
-        //    return View();
-        //}
+            return View(tickets);
+        }
 
         public ActionResult CreateTicket()
         {

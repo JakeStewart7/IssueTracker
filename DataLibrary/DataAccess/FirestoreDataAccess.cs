@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataLibrary.Config;
+using DataLibrary.Models;
 using Google.Cloud.Firestore;
 
 namespace DataLibrary.DataAccess
@@ -17,21 +18,30 @@ namespace DataLibrary.DataAccess
             database = db;
         }
 
-        // TODO
-        //public static List<T> LoadData<T>()
-        //{
+        public static async Task<List<T>> LoadData<T>(string collectionName)
+        {
+            Query qref = database.Collection(collectionName);
+            QuerySnapshot snap = await qref.GetSnapshotAsync();
 
-        //}
+            List<T> dataList = new List<T>();
+            foreach (DocumentSnapshot docSnap in snap)
+            {
+                T data = docSnap.ConvertTo<T>();
+                if (docSnap.Exists)
+                {
+                    dataList.Add(data);
+                }
+            }
 
-        public static int SaveData(Dictionary<string, object> data, string collectionName)
+            return dataList;
+        }
+
+        public static int SaveData<T>(T data, string collectionName)
         {
             // Creates collection if not yet created
             CollectionReference collection = database.Collection(collectionName);
 
-            DateTime date = DateTime.Now;
-            string documentID = date.ToString("yyyyMMddhhmmssfff");
-
-            DocumentReference document = collection.Document(documentID);
+            DocumentReference document = collection.Document();
             document.SetAsync(data);
 
             return 0;
