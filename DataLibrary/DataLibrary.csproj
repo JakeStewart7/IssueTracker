@@ -119,9 +119,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\ProjectProcessor.cs" />
     <Compile Include="BusinessLogic\TicketProcessor.cs" />
     <Compile Include="Config\FirestoreConfig.cs" />
     <Compile Include="DataAccess\FirestoreDataAccess.cs" />
+    <Compile Include="Models\ProjectModel.cs" />
     <Compile Include="Models\TicketModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

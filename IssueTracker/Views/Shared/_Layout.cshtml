@@ -21,8 +21,10 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Create Ticket", "CreateTicket", "Home")</li>
-                    <li>@Html.ActionLink("View Tickets", "ViewTickets", "Home")</li>
+                    <li>@Html.ActionLink("Create Project", "CreateProject", "Projects")</li>
+                    <li>@Html.ActionLink("View Projects", "ViewProjects", "Projects")</li>
+                    <li>@Html.ActionLink("Create Ticket", "CreateTicket", "Tickets")</li>
+                    <li>@Html.ActionLink("View Tickets", "ViewTickets", "Tickets")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
@@ -40,16 +42,5 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="/__/firebase/8.2.5/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-         https://firebase.google.com/docs/web/setup#available-libraries -->
-    <!-- <script src="/__/firebase/8.2.5/firebase-analytics.js"></script> -->
-    <script src="/__/firebase/8.2.5/firebase-firestore.js"></script>
-
-    <!-- Initialize Firebase -->
-    <script src="/__/firebase/init.js"></script>
 </body>
 </html>

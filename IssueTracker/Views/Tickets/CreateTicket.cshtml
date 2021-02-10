@@ -97,8 +97,8 @@
         List<SelectListItem> listUsers = new List<SelectListItem>();
         listUsers.Add(new SelectListItem
         {
-            Text = "Me",
-            Value = "Me"
+            Text = "Unassigned",
+            Value = "Unassigned"
         });
     }
 
@@ -120,7 +120,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "ViewTickets")
 </div>
 
 @section Scripts {
