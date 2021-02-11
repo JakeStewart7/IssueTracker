@@ -14,6 +14,9 @@ namespace DataLibrary.Models
         public string Title { get; set; }
 
         [FirestoreProperty]
+        public string ProjectName { get; set; }
+
+        [FirestoreProperty]
         public string Description { get; set; }
 
         [FirestoreProperty]

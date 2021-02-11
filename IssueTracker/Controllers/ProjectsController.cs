@@ -39,11 +39,20 @@ namespace IssueTracker.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateProject(ProjectModel model)
+        public async Task<ActionResult> CreateProject(ProjectModel model)
         {
             if (ModelState.IsValid)
             {
-                ProjectProcessor.CreateProject(model.Name, model.Description);
+                // Prevent duplicate project names
+                try
+                {
+                    await ProjectProcessor.CreateProject(model.Name, model.Description);
+                }
+                catch(InvalidOperationException e)
+                {
+                    ModelState.AddModelError("Error", "Project name already exists.");
+                    return View(model);
+                }
                 return RedirectToAction("ViewProjects");
             }
 

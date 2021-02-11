@@ -11,12 +11,13 @@ namespace DataLibrary.BusinessLogic
 {
     public static class TicketProcessor
     {
-        public static int CreateTicket(string title, string description = "",
+        public static int CreateTicket(string title, string projectName, string description = "",
             string type = "Bug", string resolver = "", string priority = "High")
         {
             TicketModel ticket = new TicketModel
             {
                 Title = title,
+                ProjectName = projectName,
                 Description = description,
                 Type = type,
                 Resolver = resolver,
@@ -26,12 +27,12 @@ namespace DataLibrary.BusinessLogic
                 Timestamp = DateTime.Now.ToString(),
             };
 
-            return FirestoreDataAccess.SaveData(ticket, "Tickets");
+            return FirestoreDataAccess.SaveDataToCollection(ticket, "Tickets");
         }
 
         public static async Task<List<TicketModel>> LoadTickets()
         {
-            return await FirestoreDataAccess.LoadData<TicketModel>("Tickets");
+            return await FirestoreDataAccess.LoadCollection<TicketModel>("Tickets");
         }
     }
 }

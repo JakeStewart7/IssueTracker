@@ -23,6 +23,7 @@ namespace IssueTracker.Controllers
                 tickets.Add(new TicketModel
                 {
                     Title = row.Title,
+                    ProjectName = row.ProjectName,
                     Description = row.Description,
                     Type = row.Type,
                     Resolver = row.Resolver,
@@ -36,9 +37,18 @@ namespace IssueTracker.Controllers
             return View(tickets);
         }
 
-        public ActionResult CreateTicket()
+        public async Task<ActionResult> CreateTicket()
         {
             ViewBag.Message = "Create a Ticket";
+
+            var data = await ProjectProcessor.LoadProjects();
+            List<string> projectTitles = new List<string>();
+
+            foreach (var row in data)
+            {
+                projectTitles.Add(row.Name);
+            }
+            ViewBag.ProjectTitles = projectTitles;
 
             return View();
         }
@@ -50,6 +60,7 @@ namespace IssueTracker.Controllers
             if (ModelState.IsValid)
             {
                 TicketProcessor.CreateTicket(model.Title,
+                    model.ProjectName,
                     model.Description,
                     model.Type,
                     model.Resolver,

@@ -18,7 +18,7 @@ namespace DataLibrary.DataAccess
             database = db;
         }
 
-        public static async Task<List<T>> LoadData<T>(string collectionName)
+        public static async Task<List<T>> LoadCollection<T>(string collectionName)
         {
             Query qref = database.Collection(collectionName);
             QuerySnapshot snap = await qref.GetSnapshotAsync();
@@ -36,7 +36,7 @@ namespace DataLibrary.DataAccess
             return dataList;
         }
 
-        public static int SaveData<T>(T data, string collectionName)
+        public static int SaveDataToCollection<T>(T data, string collectionName)
         {
             // Creates collection if not yet created
             CollectionReference collection = database.Collection(collectionName);
@@ -45,6 +45,20 @@ namespace DataLibrary.DataAccess
             document.SetAsync(data);
 
             return 0;
+        }
+        
+        public static async Task<bool> DocumentExists(string key, string value, string collectionName)
+        {
+            Query qref = database.Collection(collectionName).WhereEqualTo(key, value);
+            QuerySnapshot snap = await qref.GetSnapshotAsync();
+            if (snap.Count() == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
